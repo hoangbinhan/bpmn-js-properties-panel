@@ -26,14 +26,12 @@
     vertical-align: middle;
   }
 
-  button,
   input,
-  select,
+  button,
   textarea,
   [contenteditable] {
-    font-size: 14px;
     padding: 3px 6px;
-    border: 1px solid @bpp-input-border-color;
+    border: 1px solid @bpp-color-gray-light;
 
     &:focus {
       .focus();
@@ -42,7 +40,7 @@
     &.invalid {
       .invalid();
       &:focus {
-        box-shadow: 0 0 0 2px @bpp-error-shadow-color, 0 0 0 1px @bpp-error-shadow-inset-color inset;
+        box-shadow: 0 0 1px 2px fade(@bpp-color-error, 20%);
       }
     }
   }
@@ -61,7 +59,7 @@
 
   [contenteditable] {
     outline: 0px solid transparent;
-    background-color: @bpp-input-background-color;
+    background-color: white;
 
     overflow-y: auto;
 
@@ -72,12 +70,12 @@
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
     &:before {
-      content: "\feff";
+      content: "\feff ";
     }
   }
 
   [disabled] {
-    color: @bpp-input-disabled-color;
+    color: #808080;
   }
 
   label {
@@ -88,12 +86,14 @@
 
   .entry-label {
     .label();
-    font-size: 16px;
+    font-size: 120%;
     margin-top: 5px;
     margin-bottom: 10px;
+    transition: margin 0.218s linear;
+    font-style: italic;
 
     &.divider {
-      border-top: 1px dotted @bpp-divider-color;
+      border-top: 1px dotted #ccc;
       padding-top: 8px;
       margin-top: 16px;
       width: 100%;
@@ -109,7 +109,7 @@
 .bpp-error-message,
 .bpp-error-message.bpp-entry-link {
   margin-top: 5px;
-  color: @bpp-error-color;
+  color: @bpp-color-error;
 }
 
 .bpp-row {
@@ -276,17 +276,6 @@ label.bpp-hidden {
         border-left: none;
       }
     }
-
-    &.bpp-table-row-columns-3 {
-      width: 33%;
-      box-sizing: border-box;
-      &.bpp-table-row-removable {
-        width: ~"calc(33% - 8px)";
-      }
-      &:not(:first-child) {
-        border-left: none;
-      }
-    }
   }
 
   > button {
@@ -298,15 +287,16 @@ label.bpp-hidden {
 .bpp-properties-static {
   margin-bottom: 0;
   margin-top: 0;
-  border: 1px solid @bpp-properties-static-border-color;
-  background-color: @bpp-properties-static-background-color;
+  border: 1px solid @bpp-color-gray-light;
+  background-color: white;
   padding: 3px 6px;
   font: 13.3333px Arial;
   width: 100%;
 }
 
 .bpp-entry-link {
-  color: @bpp-primary-color;
+  cursor: pointer;
+  color: @bpp-color-primary;
 }
 
 .bpp-icon-warning:before {
@@ -316,14 +306,14 @@ label.bpp-hidden {
 
 .bpp-field-description {
   margin-top: 5px;
-  color: @bpp-input-description-color;
+  color: #999;
 
   a {
-    color: darken(@bpp-primary-color, 10%);
+    color: darken(@bpp-color-primary, 10%);
     text-decoration: none;
 
     &:hover {
-      color: @bpp-primary-color;
+      color: @bpp-color-primary;
     }
   }
 }
